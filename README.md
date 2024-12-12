@@ -33,6 +33,19 @@ npm install
 
 1.	프로젝트 루트에 db.json 파일이 없으면 생성합니다.
 2. db.json 파일에 초기 데이터를 추가합니다.
+```bash
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "소년이 온다",
+      "author": "한강",
+      "quantity": 9,
+      "image": "image-url"
+    }
+  ]
+}
+```
 3. JSON Server를 실행합니다.
 
 
