@@ -7,7 +7,7 @@ export const fetchBooks = async ():Promise<Book[]> => {
     return data;
 }
 
-// 책 추가
+//책 추가
 export const addBook = async (newBook: Omit<Book, "id">): Promise<Book> => {
     const { data } = await authInstance.post<Book>("/books", newBook);
     return data;
@@ -16,4 +16,10 @@ export const addBook = async (newBook: Omit<Book, "id">): Promise<Book> => {
 //삭제
 export const deleteBook = async (id: number): Promise<void> => {
     await authInstance.delete(`/books/${id}`);
+};
+
+//수량 수정
+export const updateBookQuantity = async (id: number, quantity: number): Promise<Book> => {
+    const { data } = await authInstance.patch<Book>(`/books/${id}`, { quantity });
+    return data;
 };
