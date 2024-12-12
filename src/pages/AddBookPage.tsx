@@ -2,7 +2,7 @@
 import React from 'react';
 import { addBook } from '../api/api';
 import { Book } from '../types/book.type';
-import AddBookForm from '../components/AddBook.tsx';
+import AddBook from '../components/AddBook.tsx';
 import { useNavigate } from 'react-router-dom';
 
 const AddBookPage: React.FC = () => {
@@ -18,9 +18,7 @@ const AddBookPage: React.FC = () => {
     };
 
     return (
-        <div>
-            <AddBookForm onAdd={handleAddBook} />
-        </div>
+            <AddBook onAdd={handleAddBook} />
     );
 };
 

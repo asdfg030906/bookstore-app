@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Book } from "../types/book.type";
+import styled from "styled-components";
 
 interface AddBookFormProps {
     onAdd: (newBookData: Omit<Book, "id">) => Promise<void>;
@@ -32,10 +33,13 @@ const AddBook: React.FC<AddBookFormProps> = ({ onAdd }) => {
     };
 
     return (
-        <form onSubmit={handleAddBook} style={{ marginBottom: "20px" }}>
-            <h2>책 추가하기</h2>
+        <Container onSubmit={handleAddBook}>
+            <Wrap>
+            <h2>도서 상품 추가하기</h2>
+                <div>
+
             <div>
-                <label>제목: </label>
+                <span>제목: </span>
                 <input
                     value={newBookTitle}
                     onChange={(e) => setNewBookTitle(e.target.value)}
@@ -43,7 +47,7 @@ const AddBook: React.FC<AddBookFormProps> = ({ onAdd }) => {
                 />
             </div>
             <div>
-                <label>저자: </label>
+                <span>저자: </span>
                 <input
                     value={newBookAuthor}
                     onChange={(e) => setNewBookAuthor(e.target.value)}
@@ -51,7 +55,7 @@ const AddBook: React.FC<AddBookFormProps> = ({ onAdd }) => {
                 />
             </div>
             <div>
-                <label>수량: </label>
+                <span>수량: </span>
                 <input
                     type="number"
                     value={newBookQuantity}
@@ -60,7 +64,7 @@ const AddBook: React.FC<AddBookFormProps> = ({ onAdd }) => {
                 />
             </div>
             <div>
-                <label>설명: </label>
+                <span>설명: </span>
                 <input
                     value={newBookDescription}
                     onChange={(e) => setNewBookDescription(e.target.value)}
@@ -68,7 +72,7 @@ const AddBook: React.FC<AddBookFormProps> = ({ onAdd }) => {
                 />
             </div>
             <div>
-                <label>이미지 URL: </label>
+                <span>이미지 URL: </span>
                 <input
                     value={newBookImgUrl}
                     onChange={(e) => {
@@ -82,9 +86,54 @@ const AddBook: React.FC<AddBookFormProps> = ({ onAdd }) => {
                     required
                 />
             </div>
-            <button type="submit">Add Book</button>
-        </form>
+            <button type="submit">추가하기</button>
+                </div>
+            </Wrap>
+        </Container>
     );
 };
 
 export default AddBook;
+
+export const Container = styled.div`
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+`
+
+const Wrap = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    >h2{
+        font-size: 32px;
+        margin: 100px;
+    }
+    
+    >div{
+        display: flex;
+        flex-direction: column;
+        >div{
+            margin-bottom: 20px;
+            border: 1px solid #E0E0E0;
+            padding: 0 10px;
+            border-radius: 5px;
+            >span{
+                font-size: 18px;
+            }
+            >input{
+                width: 600px;
+                padding: 10px;
+                font-size: 18px;
+            }
+        }
+        >button{
+            font-size: 20px;
+            padding: 10px 30px;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 7px;
+        }
+    }
+`

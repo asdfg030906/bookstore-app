@@ -1,11 +1,12 @@
-import './App.css'
+import GlobalStyles from "./style/GlobalStyles.ts";
 import Router from "./shared/Router.tsx";
 
-function App() {
 
+function App() {
   return (
     <>
-     <Router/>
+        <GlobalStyles />
+        <Router/>
     </>
   )
 }
