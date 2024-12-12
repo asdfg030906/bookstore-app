@@ -33,8 +33,8 @@ const AddBook: React.FC<AddBookFormProps> = ({ onAdd }) => {
     };
 
     return (
-        <Container onSubmit={handleAddBook}>
-            <Wrap>
+        <Container>
+            <Wrap onSubmit={handleAddBook}>
             <h2>도서 상품 추가하기</h2>
                 <div>
 
