@@ -101,7 +101,7 @@ export const Container = styled.div`
     background-color: #fff;
 `
 
-const Wrap = styled.div`
+const Wrap = styled.form`
     width: 100%;
     display: flex;
     flex-direction: column;

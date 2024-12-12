@@ -29,6 +29,7 @@ cd <project-directory>
 npm install
 ```
 
+
 ### JSON Server 설정
 
 1.	프로젝트 루트에 db.json 파일이 없으면 생성합니다.
@@ -52,6 +53,7 @@ npm install
 ```bash
 npx json-server --watch db.json --port 3001
 ```
+
 
 
 ### 애플리케이션 실행
