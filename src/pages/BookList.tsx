@@ -1,4 +1,3 @@
-// src/components/BookList.tsx
 import React, { useState, useEffect } from "react";
 import {fetchBooks, updateBookQuantity} from "../api/api";
 import { Book } from "../types/book.type";

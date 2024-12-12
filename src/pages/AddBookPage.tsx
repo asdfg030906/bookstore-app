@@ -1,4 +1,3 @@
-// src/pages/AddBookPage.tsx
 import React from 'react';
 import { addBook } from '../api/api';
 import { Book } from '../types/book.type';
