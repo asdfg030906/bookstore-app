@@ -2,12 +2,15 @@
 import React, { useState, useEffect } from "react";
 import { fetchBooks } from "../api/api";
 import { Book } from "../types/book.type";
+import {useNavigate} from "react-router-dom";
 
 const BookList: React.FC = () => {
     const [books, setBooks] = useState<Book[]>([]);
     const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const itemsPerPage = 10;
+
+   const navigate = useNavigate();
 
     useEffect(() => {
         const getBooks = async () => {
@@ -32,9 +35,14 @@ const BookList: React.FC = () => {
 
     return (
         <div>
+            <h1>책 목록</h1>
+            <button onClick={() => navigate("/add")} >
+                책 추가하기
+            </button>
             <ul>
                 {currentBooks.map((book) => (
                     <li key={book.id}>
+                        <img src={book.img}/>
                         <h3>{book.title}</h3>
                         <p>작가: {book.author}</p>
                         <p>설명: {book.description}</p>
