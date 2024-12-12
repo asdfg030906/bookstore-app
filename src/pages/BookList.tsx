@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { fetchBooks } from "../api/api";
 import { Book } from "../types/book.type";
 import {useNavigate} from "react-router-dom";
+import {deleteBook} from "../api/api";
 
 const BookList: React.FC = () => {
     const [books, setBooks] = useState<Book[]>([]);
@@ -33,6 +34,17 @@ const BookList: React.FC = () => {
         setCurrentPage(newPage);
     };
 
+    const handleRemoveClick = async (id: number) => {
+        try {
+            await deleteBook(id);
+            setBooks((prev) => prev.filter((book) => book.id !== id));
+            setFilteredBooks((prev) => prev.filter((book) => book.id !== id));
+            console.log(`Book ID ${id} removed`);
+        } catch (error) {
+            console.error(`Failed to remove book ID ${id}`, error);
+        }
+    };
+
     return (
         <div>
             <h1>책 목록</h1>
@@ -47,6 +59,9 @@ const BookList: React.FC = () => {
                         <p>작가: {book.author}</p>
                         <p>설명: {book.description}</p>
                         <p>수량: {book.quantity}</p>
+                        <button onClick={() => handleRemoveClick(book.id)}>
+                            삭제
+                        </button>
                     </li>
                 ))}
             </ul>

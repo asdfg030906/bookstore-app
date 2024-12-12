@@ -12,3 +12,8 @@ export const addBook = async (newBook: Omit<Book, "id">): Promise<Book> => {
     const { data } = await authInstance.post<Book>("/books", newBook);
     return data;
 };
+
+//삭제
+export const deleteBook = async (id: number): Promise<void> => {
+    await authInstance.delete(`/books/${id}`);
+};
